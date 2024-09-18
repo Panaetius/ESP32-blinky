@@ -23,17 +23,39 @@ fn main() {
         // led_pin.set_high().unwrap();
         // log::info!("LED off");
         // FreeRtos::delay_ms(1000);
-        let pixels = std::iter::repeat(RGBW8::new_alpha(255, 0, 0, White(0))).take(25);
-        ws2812.write(pixels).unwrap();
-        FreeRtos::delay_ms(1000);
-        let pixels = std::iter::repeat(RGBW8::new_alpha(0, 255, 0, White(0))).take(25);
-        ws2812.write(pixels).unwrap();
-        FreeRtos::delay_ms(1000);
-        let pixels = std::iter::repeat(RGBW8::new_alpha(0, 0, 255, White(0))).take(25);
-        ws2812.write(pixels).unwrap();
-        FreeRtos::delay_ms(1000);
-        let pixels = std::iter::repeat(RGBW8::new_alpha(128, 128, 128, White(0))).take(25);
-        ws2812.write(pixels).unwrap();
-        FreeRtos::delay_ms(1000);
+        // let pixels = std::iter::repeat(RGBW8::new_alpha(255, 0, 0, White(0))).take(25);
+        // ws2812.write(pixels).unwrap();
+        // FreeRtos::delay_ms(1000);
+        // let pixels = std::iter::repeat(RGBW8::new_alpha(0, 255, 0, White(0))).take(25);
+        // ws2812.write(pixels).unwrap();
+        // FreeRtos::delay_ms(1000);
+        // let pixels = std::iter::repeat(RGBW8::new_alpha(0, 0, 255, White(0))).take(25);
+        // ws2812.write(pixels).unwrap();
+        // FreeRtos::delay_ms(1000);
+        // let pixels = std::iter::repeat(RGBW8::new_alpha(128, 128, 128, White(0))).take(25);
+        // ws2812.write(pixels).unwrap();
+        // FreeRtos::delay_ms(1000);
+        for n in 0..=255 {
+            let pixels = std::iter::repeat(RGBW8::new_alpha(n, 255, 0, White(0))).take(25);
+            ws2812.write(pixels).unwrap();
+            FreeRtos::delay_ms(20);
+        }
+        for n in (0..=255).rev() {
+            let pixels = std::iter::repeat(RGBW8::new_alpha(255, n, 0, White(0))).take(25);
+            ws2812.write(pixels).unwrap();
+            FreeRtos::delay_ms(20);
+        }
+        FreeRtos::delay_ms(500);
+        for n in 0..=255 {
+            let pixels = std::iter::repeat(RGBW8::new_alpha(255, n, 0, White(0))).take(25);
+            ws2812.write(pixels).unwrap();
+            FreeRtos::delay_ms(20);
+        }
+        for n in (0..=255).rev() {
+            let pixels = std::iter::repeat(RGBW8::new_alpha(n, 255, 0, White(0))).take(25);
+            ws2812.write(pixels).unwrap();
+            FreeRtos::delay_ms(20);
+        }
+        FreeRtos::delay_ms(500);
     }
 }
